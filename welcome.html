@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+
+<div class="card">
+  <div id="topText" class="top-text">This is for you</div>
+
+  <!-- Emoji Envelope -->
+  <div id="envelope" class="emoji-envelope">✉️</div>
+
+  <button id="openBtn" class="open-btn">Tap to reveal 💌</button>
+
+  <div id="message" class="message hidden"></div>
+
+  <footer id="footer" class="footer hidden">Happy Valentine’s ❤️ from Emmanuel</footer>
+</div>
+<div id="hearts-container"></div>
+<script>
+  const envelope = document.getElementById("envelope");
+  const openBtn = document.getElementById("openBtn");
+  const messageBox = document.getElementById("message");
+  const heartsContainer = document.getElementById("hearts-container");
+  const footer = document.getElementById("footer");
+  const topText = document.getElementById("topText");
+
+  // Gname from Page 1
+  const name = (localStorage.getItem("valentineName") || "").toLowerCase();
+  // Messages for friends
+  const messages = {
+    bambina: "i know you don`t make a big deal of this day  but even without the Valentine’s hype, you’re genuinely appreciated.",
+    paul: "you`re more than a bestfriend to me -I see how hard you’re pushing for you dreams, and i hope you know you`re  valued ,respectedmore than you realize and  never alone on this journey.",
+    becky: "You’ve been genuinely wonderful to me and have brought such a beautiful presence in my life your kindness and warmth has shown up more to me than i probably say and I’m really grateful for that.",
+    pauline: " knowing you since childhood is something i really value-Knowing you all these years has been a gift and you’ve always been someone truly special to me.",
+    talia: "you`re not just my cousin you`re someone i genuinely love and appreciate.Having you as mycousin is something i truly cherish;your presence,laughterand heart mean more to me than i can easily put into words.",
+    ann:"There`s something quietly special about you ann - am greatful to have you in my life and always remmeber you have a  friend to count on",
+    mercy:"Your kindness shows up in ways that really matter-you have this gentle way of making people cared for - and honestly, being around you just feels nice",
+    essy:"you have this calm beautiful way of being yourself-you`re effortlessly sweet and fun to be around -the kind kind of person who turn simple moments into good memories and that alone makes you special",
+    eunice:"thinking back to those school days still brings a smile - you were one of those people who made the journey ligter and more fun.",
+    lovebree:"Having you as my sister is one of those quiet blessings i don`t say enough -but i hope you always knowhow special you are to me.",
+    
+  };
+
+  const finalMessage = messages[name] || "This was made just for you.";
+
+  let opened = false;
+
+  openBtn.addEventListener("click", () => {
+    if (opened) return;
+    opened = true;
+
+    // Hide button and top text
+    openBtn.style.display = "none";
+    topText.style.display = "none";
+
+    // Envelope opens & disappears
+    envelope.classList.add("open");
+
+    // Burst of hearts
+    burstHearts();
+
+    // Show message after envelope disappears
+    setTimeout(() => {
+      let displayName = messages[name] ? capitalize(name) : "";
+      messageBox.innerHTML = displayName ? `<strong>${displayName}</strong>,<br>${finalMessage}` : finalMessage;
+      messageBox.classList.remove("hidden");
+      footer.classList.remove("hidden");
+      startFloatingHearts();
+    }, 800);
+  });
+  function burstHearts() {
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart burst";
+    heart.textContent = "💖";
+
+    // Random offsets
+    const x = rand(-120, 120) + "px";
+    const y = rand(-120, 120) + "px";
+    heart.style.setProperty("--x", x);
+    heart.style.setProperty("--y", y);
+
+    heart.style.left = "50%";
+    heart.style.top = "50%";
+
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  }
+}
+function startFloatingHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    
+    // Random Valentine emoji
+    const emojis = ["💖", "❤️", "💜", "💓"];
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    // Random horizontal position
+    heart.style.left = Math.random() * 100 + "vw";
+
+    // Random size
+    heart.style.fontSize = 16 + Math.random() * 20 + "px";
+
+    // Start at bottom
+    heart.style.bottom = "-20px";
+
+    heartsContainer.appendChild(heart);
+
+    // Remove after animation ends
+    setTimeout(() => heart.remove(), 6000);
+  }, 100); // every 0.3s
+}
+
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+  function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ""; }
+
+</script>
+</body>
+</html>

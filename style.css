@@ -1,0 +1,113 @@
+/* Base layout */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3); /* lavender tones */
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Card */
+.card {
+  background: rgba(255, 182, 193, 0.2);
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  text-align: center;
+}
+
+/* Button */
+button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  background:#ff69b4;
+  color:white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+}
+
+/* Floating hearts */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hearts span {
+  position: absolute;
+  bottom: -50px;
+  opacity: 0.7;
+  animation: floatUp 12s linear infinite;
+}
+
+/* Side-to-side floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(30px, -50vh);
+  }
+  100% {
+    transform: translate(-30px, -110vh);
+    opacity: 0;
+  }
+}
+
+/* Fade in card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
