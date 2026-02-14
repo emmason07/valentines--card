@@ -30,7 +30,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.6;
   /* Centering */
-  margin: 20px auto;       /* auto left/right centers it */
+  margin:0;       /* auto left/right centers it */
   display: block;          /* ensures margin auto works */
 }
 
