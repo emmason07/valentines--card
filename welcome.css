@@ -12,8 +12,15 @@ body {
   overflow: hidden;
   color: white;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal center */
+  justify-content: center; /* vertical center */
+  min-height: 100vh;     /* full screen height */
+}
 .message {
-  background: linear-gradient(135deg, #ff7eb3, #ff758c); /* romantic gradient */
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
   color: white;
   padding: 30px;
   border-radius: 15px;
@@ -22,10 +29,12 @@ body {
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.6;
-  margin: 20px auto;
-  position: relative;
-  animation: fadeIn 1.2s ease forwards;
+  /* Centering */
+  margin: 20px auto;       /* auto left/right centers it */
+  display: block;          /* ensures margin auto works */
 }
+
+
 
 .message::before {
   content: "💌";
