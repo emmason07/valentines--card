@@ -31,7 +31,6 @@ body {
   line-height: 1.6;
   /* Centering */
   margin:0;       /* auto left/right centers it */
-  display: block;          /* ensures margin auto works */
 }
 
 
@@ -83,9 +82,6 @@ body {
 
 .message {
   margin-bottom: 20px;
-  bottom: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
   font-size: 1.2rem;
   max-width: 400px;
   line-height: 1.0;
